@@ -13,6 +13,7 @@ import Dashboard from "./pages/Dashboard";
 import Footer from "./Components/Footer"
 import Forgot from "./pages/Forgot";
 import UserDets from "./pages/UserDets";
+import { SpeedInsights } from "@vercel/speed-insights/react"
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -71,6 +72,7 @@ function App() {
             <Footer />
           </div>
         </Router>
+        <SpeedInsights />
       </NoteState>
     </>
   )
