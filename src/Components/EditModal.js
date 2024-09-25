@@ -8,7 +8,6 @@ const EditModal = ({ showToast, note, setNote, modalOpen, closeModal }) => {
   const handleClick = () => {
     closeModal();
     editNote(note.id, note.utitle, note.udescription, note.utag);
-    showToast("Note edited successfully", "success");
   };
 
   const onChange = (evt) => {

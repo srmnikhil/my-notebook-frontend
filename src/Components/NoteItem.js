@@ -4,10 +4,9 @@ import noteContext from '../context/notes/noteContext';
 const NoteItem = (props) => {
     const context = useContext(noteContext);
     const { deleteNote } = context;
-    const { note, updateNote, showToast, index } = props;
+    const { note, updateNote, index } = props;
     const handleDelete = () => {
         deleteNote(note._id);
-        showToast("Note deleted successfully", "success");
     }
     const handleEdit = () => {
         updateNote(note);

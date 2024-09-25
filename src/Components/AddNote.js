@@ -1,23 +1,23 @@
 import React, { useContext, useState } from 'react';
 import noteContext from '../context/notes/noteContext';
+import Loader from './Loader';
 
-
-const AddNote = (props) => {
+const AddNote = () => {
   const context = useContext(noteContext);
-  const { addNote } = context;
+  const { addNote, loading } = context;
   const [note, setNote] = useState({ title: "", description: "", tag: "" })
-  const handleClick = (evt) => {
+  const handleClick = async(evt) => {
     evt.preventDefault();
     const newNote = { ...note, tag: note.tag.length === 0 ? "General" : note.tag };
     addNote(newNote.title, newNote.description, newNote.tag);
     setNote({ title: "", description: "", tag: "" });
-    props.showToast("Note added successfully", "success");
   }
   const onChange = (evt) => {
     setNote({ ...note, [evt.target.name]: evt.target.value });
   }
   return (
-      <div className="container my-3" style={{position: 'sticky', top: "6rem"}}>
+    <div> {loading && <Loader />}
+      <div className="container my-3" style={{ position: 'sticky', top: "6rem" }}>
         <h2>Add a Note</h2>
         <form className='my-3'>
           <div className="mb-1">
@@ -35,6 +35,7 @@ const AddNote = (props) => {
           <button disabled={note.title.length < 3 || note.description.length < 5} type="submit" className="btn btn-primary" onClick={handleClick}>Add Note</button>
         </form>
       </div>
+    </div>
   )
 }
 
